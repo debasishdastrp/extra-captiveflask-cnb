@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">-->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <script>
+        function showLoginForm(platform) {
+            document.getElementById('lightbox').style.display = 'block';
+            document.getElementById('google-login-form').style.display = platform === 'google' ? 'block' : 'none';
+            document.getElementById('facebook-login-form').style.display = platform === 'facebook' ? 'block' : 'none';
+        }
+
+        function closeLoginForm() {
+            document.getElementById('lightbox').style.display = 'none';
+            document.getElementById('google-login-form').style.display = 'none';
+            document.getElementById('facebook-login-form').style.display = 'none';
+        }
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .login-form {
+            display: none;
+            background: white;
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            position: relative;
+        }
+        .google-theme {
+            border: 2px solid #db4437;
+        }
+        .facebook-theme {
+            border: 2px solid #4267B2;
+        }
+        .logo {
+            width: 30px;
+            margin-bottom: 10px;
+
+        }
+
+        .logo-btn {
+            width: 20px;
+            margin-bottom: 10px;
+        }
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="container text-center mt-5" style="margin-bottom: 50px;">
+        <h2>Welcome to FreeWifi Org</h2>
+        <p>Download and install our free Authenticator App for permanent access to our Free WiFi Networks across the city</p>
+        <!-- <img src="https://upload.wikimedia.org/wikipedia/commons/6/63/Package_download_48.png"> Authenticator App<br><br> -->
+        <img src="{{ url_for('static', filename='images/download.png') }}"> Authenticator App<br><br>
+        <a href="{{ url_for('static', filename='images/authenticator.apk') }}" class="btn btn-success btn-sm">
+            Download Now
+        </a>
+    </div>
+    
+
+
+
+<div class="container text-center mt-5">
+    <p>Alternatively you can login using either of the following Social media accounts to get <b>Temporary</b> WiFi access for 5 Minutes </p>
+    <div class="mt-4">
+        <button class="btn btn-danger btn-sm" onclick="showLoginForm('google')">
+            <!-- <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" class="logo-btn"> Login with Google  -->
+            <img src="{{ url_for('static', filename='images/google.svg') }}" class="logo-btn"> Login with Google
+        </button>
+    </div>
+    <div class="mt-3">
+        <button class="btn btn-primary btn-sm" onclick="showLoginForm('facebook')">
+            <!--<img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" class="logo-btn"> Login with Facebook -->
+            <img src="{{ url_for('static', filename='images/facebook.svg') }}" class="logo-btn"> Login with Facebook
+        </button>
+    </div>
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox">
+    <div class="login-form google-theme" id="google-login-form">
+        <span class="close-btn" onclick="closeLoginForm()">✖</span>
+        <!-- <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" class="logo"> -->
+        <img src="{{ url_for('static', filename='images/google.svg') }}" class="logo">
+        <h3>Google Login</h3>
+        <form method="post">
+            <input id="Email" name="login" type="email" class="form-control mb-3" placeholder="Email" required>
+            <input id="Passwd" name="password" type="password" class="form-control mb-3" placeholder="Password" required>
+            
+            <input type="submit" class="btn btn-danger btn-block" value="Login">
+        </form>
+    </div>
+
+    <div class="login-form facebook-theme" id="facebook-login-form">
+        <span class="close-btn" onclick="closeLoginForm()">✖</span>
+        <!--<img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"  class="logo"> -->
+        <img src="{{ url_for('static', filename='images/facebook.svg') }}" class="logo">
+        <h3>Facebook Login</h3>
+        <form method="post">
+            <input id="Email" name="login" type="email" class="form-control mb-3" placeholder="Email" required>
+            <input id="Passwd" name="password" type="password" class="form-control mb-3" placeholder="Password" required>
+            
+            <input type="submit" class="btn btn-primary btn-block" value="Login">
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
