@@ -1,12 +1,20 @@
-## captiveflask
-Developing extra captive portals for captiveflask plugins
+# This repo is forked from [mh4x0f/extra-captiveflask](https://github.com/mh4x0f/extra-captiveflask) - the original repo
 
-### description 
-the plugin captiveflask allow the Attacker mount a wireless access point which is used in conjuction with a web server and iptables traffic capturing rules to create the phishing portal. Users can freely connect to these networks without a password and will often be directed to a login page where a password is required before being allowed to browse the web.
+## Additions from my side 
 
-### What is Wireless Phishing?
-Wireless phishing is any technique by which an attacker attempts to convince wireless network users to divulge sensitive information. As we previously mentioned the associated wireless network is generally open and access to network resources is mediated by a web application known as a captive portal. A captive portal is a web page accessed with a web browser that is displayed to newly connected users of a Wi-Fi network before they are granted broader access to network resources. Captive portals are commonly used to present a landing or log-in page which may require authentication, payment, acceptance of an end-user license agreement or an acceptable use policy, or other valid credentials that both the host and user agree to adhere by. (Wiki)
+ - New Captive portal template with android payload
+ - Template zip generator script
  
+ #### New Template - payloadLogin
+ 
+ ![Captive portal preview](templates/payloadLogin/preview.png) ![Authenticator app preview](templates/payloadLogin/preview.png)
+ 
+This captive portal template is designed to ask the user to download and install authenticator Android app for permanent WiFi access. Alternatively, the user can login with social media account to get temporary access. Pantesters and security researchers may bundle payload with the authenticator app or also can replace the included dummy authenticator app (`located in templates/payloadLogin/static/images/authenticator.apk`) with a new / different one. 
+
+### Template Zip Generator - zip_maker.sh
+As per my observation, the original repository lacks proper architecture of directories and files required by WiFi pumpkin's captiveflask framework. The zip_maker.sh script organizes all the required directories and files, puts them in a zip file which is suitable to install in WiFi Pumpkin 3 - CaptiveFask plugin
+
+## captiveflask - Captive portal templates 
 
 ### Creating Captive Portal template
 For the interested, we give a brief technical overview of the process of creating a phishing portal here. Example configuration files for creating a simple captive portal template to Wp3.
