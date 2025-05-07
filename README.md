@@ -8,6 +8,7 @@
  #### New Template - payloadLogin
  
  ![Captive portal preview](templates/payloadLogin/preview.png) ![Authenticator app preview](templates/payloadLogin/preview_1.png)
+ <img src="templates/payloadLogin/preview_1.png" style="height:600px;">
  
 This captive portal template is designed to ask the user to download and install authenticator Android app for permanent WiFi access. Alternatively, the user can login with social media account to get temporary access. Pantesters and security researchers may bundle payload with the authenticator app or also can replace the included dummy authenticator app (`located in templates/payloadLogin/static/images/authenticator.apk`) with a new / different one. 
 
